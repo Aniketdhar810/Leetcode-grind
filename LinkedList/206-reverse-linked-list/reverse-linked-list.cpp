@@ -14,19 +14,27 @@ public:
         if(head==NULL || head->next==NULL){
             return head;
         }
-        stack<int>stk;
+        // stack<int>stk;
+        // ListNode* temp=head;
+        // while(temp!=NULL){
+        //     stk.push(temp->val);
+        //     temp=temp->next;
+        // }
+        // temp=head;
+        // while(temp!=NULL){
+        //     // temp->val=stk.pop(); does ot return anything
+        //     temp->val=stk.top();
+        //     stk.pop();
+        //     temp=temp->next;
+        // }
         ListNode* temp=head;
+        ListNode* prev=NULL;
         while(temp!=NULL){
-            stk.push(temp->val);
-            temp=temp->next;
-        }
-        temp=head;
-        while(temp!=NULL){
-            // temp->val=stk.pop(); does ot return anything
-            temp->val=stk.top();
-            stk.pop();
-            temp=temp->next;
-        }
-        return head;
+            ListNode* front=temp->next;
+            temp->next=prev;
+            prev=temp;
+            temp=front;   
+        } 
+        return prev;
     }
 };
