@@ -10,51 +10,22 @@
  */
 class Solution {
 public:
-    ListNode* deleteHeadnode(ListNode* head){
-    //empty ll
-    if(head==NULL) return head;
-    ListNode* temp=head;
-    //new head pointing to next element
-    head=head->next;
-    delete temp;
-    return head;
-    }
-
-    int lengthofll(ListNode* head){
-    int count=0;
-    ListNode* temp=head;
-    while(temp){
-        temp=temp->next;
-        count++;
-    }
-    return count;
-    }
-
-    ListNode* deletek(ListNode* head,int k){
-    if(head==NULL) return head;
-    if(k==1){
-        return deleteHeadnode(head);
-    }
-    int cnt=0;
-    ListNode* temp=head;
-    ListNode* prev=NULL;
-    while(temp!=NULL){
-        cnt++;
-        if(cnt==k){
-            prev->next=prev->next->next;
-            delete(temp);
-            break;
+    ListNode* removeNthFromEnd(ListNode* head, int n) {      
+        ListNode* fastp=head;
+        ListNode* slowp=head;
+        for(int i=0;i<n;i++){
+            fastp=fastp->next;
         }
-        prev=temp;
-        temp=temp->next;
-    }
-    return head;
-    
-}
-
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int count=lengthofll(head);
-        count=count-n+1;
-        return deletek(head,count);
+        if(fastp==NULL){
+            return head->next;
+        }
+        while(fastp->next!=NULL){
+            slowp=slowp->next;
+            fastp=fastp->next;
+        }
+        ListNode* delNode=slowp->next;
+        slowp->next=slowp->next->next;
+        delete (delNode);
+        return head;
     }
 };
