@@ -27,9 +27,6 @@ public:
     // }
 
     ListNode* deleteMiddle(ListNode* head) {
-        if(head==nullptr){
-            return nullptr;
-        }
         if(head->next==nullptr ||head==nullptr){
             return NULL;
         }
