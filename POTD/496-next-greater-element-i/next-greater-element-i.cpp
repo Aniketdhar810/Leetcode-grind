@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        //first approach is compare every element to the right
+        //first approach is compare every element to right
         //using stack
         stack<int>st;
         map<int,int>mp;
