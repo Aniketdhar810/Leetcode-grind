@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> queryResults(int limit, vector<vector<int>>& queries) {
         int n=queries.size();
-        unordered_map<int,int>mp1,mp2;
+        map<int,int>mp1,mp2;
         //mp1 ball 
         //mp2 colour
         vector<int>ans(n);
@@ -26,8 +26,6 @@ public:
             mp1[key]=val;
             mp2[val]++;
             ans[i]=mp2.size();
-            
-           
         }
         return ans;
     }
