@@ -14,7 +14,7 @@ public:
         if(index==s.length()) return true;
         if(dp[index]!=-1) return dp[index];
         for(string word:wordDict){
-            if(index + word.size() <= s.length() && s.substr(index,word.size())==word){
+            if(s.substr(index,word.size())==word){
                 if(rec(s,wordDict,index+word.size(),dp)){
                     return dp[index]=1;
                 }
